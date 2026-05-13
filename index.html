@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,6 +17,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4Y1B25T6MM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-4Y1B25T6MM');
+</script>
 
 <style>
   :root{
@@ -128,6 +136,32 @@
     display:inline-block;margin-top:8px;font-size:.85rem;color:var(--green-700);background:var(--cream-2);
     padding:4px 10px;border-radius:999px;font-weight:500;
   }
+  .step-shot{
+    margin-top:14px;border:1px solid var(--line);border-radius:10px;overflow:hidden;
+    background:#fff;box-shadow:0 2px 8px rgba(15,81,50,.07);max-width:420px;
+  }
+  .step-shot img{width:100%;height:auto;display:block}
+  .step-shot-pair{
+    margin-top:14px;display:grid;gap:14px;
+    grid-template-columns:1fr;
+  }
+  @media(min-width:600px){.step-shot-pair{grid-template-columns:1fr 1fr}}
+  .step-shot-pair figure{
+    margin:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;
+    background:#fff;box-shadow:0 2px 8px rgba(15,81,50,.07);
+  }
+  .step-shot-pair img{width:100%;height:auto;display:block}
+  .step-shot-pair figcaption{
+    padding:8px 12px;font-size:.78rem;color:var(--muted);background:var(--cream-2);
+    border-top:1px solid var(--line);text-align:center;font-style:italic;
+  }
+  .critical-banner{
+    max-width:760px;margin:0 auto 28px;padding:14px 18px;
+    background:linear-gradient(90deg,rgba(201,169,97,.15),rgba(201,169,97,.05));
+    border:1px solid var(--gold);border-left:4px solid var(--gold);
+    border-radius:8px;color:var(--green-900);font-size:.95rem;
+  }
+  .critical-banner strong{color:var(--green-900)}
   .guide-cta{
     text-align:center;margin-top:36px;padding-top:28px;border-top:1px dashed var(--line);
     max-width:760px;margin-left:auto;margin-right:auto;
@@ -232,34 +266,65 @@
       <p class="lead" data-i18n="guideLead">Givebutter is free for nonprofits &mdash; but the platform asks donors for an optional tip. You can decline it. Follow the steps below so 100% of your gift reaches the mosque, then scroll down to the donation form.</p>
     </div>
 
+    <div class="critical-banner" data-i18n="criticalBanner">
+      <strong>Important:</strong> By default, Givebutter adds a processing fee and a 15% tip on top of your donation. The steps below show you exactly where to click to remove both, so 100% of your gift reaches the mosque.
+    </div>
+
     <div class="steps">
       <div class="step">
         <div class="step-num">1</div>
         <div class="step-body">
-          <h3 data-i18n="step1Title">Enter your donation amount</h3>
-          <p data-i18n="step1Body">Pick a preset amount or type your own, then click <strong>Continue</strong>.</p>
+          <h3 data-i18n="step1Title">Choose your donation amount</h3>
+          <p data-i18n="step1Body">Tap one of the preset amounts or type your own in the box, then click <strong>Continue</strong>.</p>
+          <div class="step-shot">
+            <img src="https://iecezan.com/assets/gb-step1-amount.png" alt="Givebutter donation amount selector with $25 chosen and a Continue button" loading="lazy">
+          </div>
         </div>
       </div>
+
       <div class="step">
         <div class="step-num">2</div>
         <div class="step-body">
-          <h3 data-i18n="step2Title">Decline the optional tip</h3>
-          <p data-i18n="step2Body">Givebutter will suggest a tip (e.g. 15%) to support the platform. To send 100% to the mosque, select <strong>"Other"</strong> and type <strong>0</strong>.</p>
-          <span class="tip" data-i18n="step2Tip">&#9733; This is the key step &mdash; please don't skip it.</span>
+          <h3 data-i18n="step2Title">Remove the processing fee</h3>
+          <p data-i18n="step2Body">On the summary screen, you'll see a <strong>processing fee</strong> added on top. Click the green <strong>"Edit"</strong> link next to it, then <strong>uncheck</strong> the "I want to cover fees" box.</p>
+          <span class="tip" data-i18n="step2Tip">&#9733; Critical step &mdash; don't skip.</span>
+          <div class="step-shot-pair">
+            <figure>
+              <img src="https://iecezan.com/assets/gb-step2-edit-fee.png" alt="Click Edit next to the processing fee" loading="lazy">
+              <figcaption data-i18n="step2CapA">2a &middot; Click the green "Edit" link</figcaption>
+            </figure>
+            <figure>
+              <img src="https://iecezan.com/assets/gb-step2-uncheck-fees.png" alt="Uncheck the I want to cover fees checkbox" loading="lazy">
+              <figcaption data-i18n="step2CapB">2b &middot; Uncheck "I want to cover fees"</figcaption>
+            </figure>
+          </div>
         </div>
       </div>
+
       <div class="step">
         <div class="step-num">3</div>
         <div class="step-body">
-          <h3 data-i18n="step3Title">Choose your payment method</h3>
-          <p data-i18n="step3Body">Card, bank, Apple Pay, Google Pay, PayPal, Venmo &mdash; Givebutter accepts all of them.</p>
+          <h3 data-i18n="step3Title">Set the optional tip to zero</h3>
+          <p data-i18n="step3Body">Givebutter pre-selects a 15% tip that does <em>not</em> go to the mosque. Open the tip dropdown and choose <strong>"Other"</strong>, then bring the amount down to <strong>$0</strong> using the minus button (or type 0).</p>
+          <span class="tip" data-i18n="step3Tip">&#9733; Critical step &mdash; don't skip.</span>
+          <div class="step-shot-pair">
+            <figure>
+              <img src="https://iecezan.com/assets/gb-step3-tip-other.png" alt="Click the tip dropdown and choose Other" loading="lazy">
+              <figcaption data-i18n="step3CapA">3a &middot; Open dropdown, choose "Other"</figcaption>
+            </figure>
+            <figure>
+              <img src="https://iecezan.com/assets/gb-step3-tip-zero.png" alt="Reduce the tip amount to zero using the minus button" loading="lazy">
+              <figcaption data-i18n="step3CapB">3b &middot; Click "&minus;" until the amount is $0</figcaption>
+            </figure>
+          </div>
         </div>
       </div>
+
       <div class="step">
         <div class="step-num">4</div>
         <div class="step-body">
-          <h3 data-i18n="step4Title">Submit your donation</h3>
-          <p data-i18n="step4Body">Click <strong>Donate</strong>. You'll receive a receipt by email. <em>Jazak Allahu khairan</em> &mdash; may Allah reward you.</p>
+          <h3 data-i18n="step4Title">Choose your payment method &amp; submit</h3>
+          <p data-i18n="step4Body">Pick card, bank, Apple Pay, Google Pay, PayPal, or Venmo &mdash; Givebutter accepts them all. Then click <strong>Donate</strong>. You'll receive a receipt by email. <em>Jazak Allahu khairan</em> &mdash; may Allah reward you.</p>
         </div>
       </div>
     </div>
@@ -371,17 +436,23 @@ const i18n = {
     heroTitle: 'Your <span class="accent">Sadaqah Jariyah</span> starts here',
     heroSub: "Help us build a permanent home for our community. Every contribution &mdash; large or small &mdash; directly supports the new mosque and the daily mission of IEC Ezan.",
     guideEyebrow: "Before You Donate",
-    guideTitle: "Please read these 4 quick steps first",
-    guideLead: "Givebutter is free for nonprofits &mdash; but the platform asks donors for an optional tip. You can decline it. Follow the steps below so 100% of your gift reaches the mosque, then scroll down to the donation form.",
-    step1Title: "Enter your donation amount",
-    step1Body: "Pick a preset amount or type your own, then click <strong>Continue</strong>.",
-    step2Title: "Decline the optional tip",
-    step2Body: 'Givebutter will suggest a tip (e.g. 15%) to support the platform. To send 100% to the mosque, select <strong>"Other"</strong> and type <strong>0</strong>.',
-    step2Tip: "&#9733; This is the key step &mdash; please don't skip it.",
-    step3Title: "Choose your payment method",
-    step3Body: "Card, bank, Apple Pay, Google Pay, PayPal, Venmo &mdash; Givebutter accepts all of them.",
-    step4Title: "Submit your donation",
-    step4Body: "Click <strong>Donate</strong>. You'll receive a receipt by email. <em>Jazak Allahu khairan</em> &mdash; may Allah reward you.",
+    guideTitle: "Please read these quick steps first",
+    guideLead: "Givebutter is free for nonprofits &mdash; but by default it adds a processing fee and an optional tip on top of your donation. You can decline both. Follow the screenshots below so 100% of your gift reaches the mosque, then scroll down to the donation form.",
+    criticalBanner: "<strong>Important:</strong> By default, Givebutter adds a processing fee and a 15% tip on top of your donation. The steps below show you exactly where to click to remove both, so 100% of your gift reaches the mosque.",
+    step1Title: "Choose your donation amount",
+    step1Body: "Tap one of the preset amounts or type your own in the box, then click <strong>Continue</strong>.",
+    step2Title: "Remove the processing fee",
+    step2Body: 'On the summary screen, you\'ll see a <strong>processing fee</strong> added on top. Click the green <strong>"Edit"</strong> link next to it, then <strong>uncheck</strong> the "I want to cover fees" box.',
+    step2Tip: "&#9733; Critical step &mdash; don't skip.",
+    step2CapA: '2a &middot; Click the green "Edit" link',
+    step2CapB: '2b &middot; Uncheck "I want to cover fees"',
+    step3Title: "Set the optional tip to zero",
+    step3Body: 'Givebutter pre-selects a 15% tip that does <em>not</em> go to the mosque. Open the tip dropdown and choose <strong>"Other"</strong>, then bring the amount down to <strong>$0</strong> using the minus button (or type 0).',
+    step3Tip: "&#9733; Critical step &mdash; don't skip.",
+    step3CapA: '3a &middot; Open dropdown, choose "Other"',
+    step3CapB: '3b &middot; Click "&minus;" until the amount is $0',
+    step4Title: "Choose your payment method &amp; submit",
+    step4Body: "Pick card, bank, Apple Pay, Google Pay, PayPal, or Venmo &mdash; Givebutter accepts them all. Then click <strong>Donate</strong>. You'll receive a receipt by email. <em>Jazak Allahu khairan</em> &mdash; may Allah reward you.",
     guideCtaText: "Ready? The secure Givebutter form is right below.",
     guideCtaBtn: "Scroll to donation form &darr;",
     donateHeader: "Donate via Givebutter",
@@ -410,17 +481,23 @@ const i18n = {
     heroTitle: 'Vaša <span class="accent">sadaka džarija</span> počinje ovdje',
     heroSub: "Pomozite nam izgraditi stalni dom za našu zajednicu. Svaki doprinos &mdash; veliki ili mali &mdash; direktno podržava izgradnju nove džamije i svakodnevni rad IEC Ezana.",
     guideEyebrow: "Prije nego donirate",
-    guideTitle: "Molimo pročitajte ova 4 koraka",
-    guideLead: "Givebutter je besplatan za neprofitne organizacije &mdash; ali platforma traži opcioni tip od donatora. Možete ga odbiti. Pratite korake ispod da 100% vašeg dara stigne džamiji, a zatim skrolajte do donacijske forme.",
-    step1Title: "Unesite iznos donacije",
-    step1Body: "Odaberite ponuđeni iznos ili upišite svoj, zatim kliknite <strong>Continue</strong>.",
-    step2Title: "Odbijte opcioni tip",
-    step2Body: 'Givebutter će predložiti tip (npr. 15%) za podršku platformi. Da pošaljete 100% džamiji, odaberite <strong>"Other"</strong> i upišite <strong>0</strong>.',
-    step2Tip: "&#9733; Ovo je ključni korak &mdash; molimo ne preskačite ga.",
-    step3Title: "Odaberite način plaćanja",
-    step3Body: "Kartica, banka, Apple Pay, Google Pay, PayPal, Venmo &mdash; Givebutter prihvata sve.",
-    step4Title: "Pošaljite donaciju",
-    step4Body: "Kliknite <strong>Donate</strong>. Dobit ćete potvrdu na email. <em>Džezakallahu hajran</em> &mdash; Allah vas nagradio.",
+    guideTitle: "Molimo pročitajte ove korake",
+    guideLead: "Givebutter je besplatan za neprofitne organizacije &mdash; ali po defaultu dodaje proces­nu naknadu i opcioni tip na vašu donaciju. Možete oboje odbiti. Pratite slike ispod da 100% vašeg dara stigne džamiji, a zatim skrolajte do forme.",
+    criticalBanner: "<strong>Važno:</strong> Po defaultu Givebutter dodaje proces­nu naknadu i 15% tipa na vašu donaciju. Koraci ispod pokazuju tačno gdje kliknuti da uklonite oboje, kako bi 100% dara stiglo džamiji.",
+    step1Title: "Odaberite iznos donacije",
+    step1Body: "Odaberite ponuđeni iznos ili upišite svoj u polju, zatim kliknite <strong>Continue</strong>.",
+    step2Title: "Uklonite proces­nu naknadu",
+    step2Body: 'Na ekranu sa rezimeom vidjet ćete dodatnu <strong>proces­nu naknadu</strong>. Kliknite zeleni link <strong>"Edit"</strong> pored nje, zatim <strong>uklonite kvačicu</strong> sa polja "I want to cover fees".',
+    step2Tip: "&#9733; Kritičan korak &mdash; ne preskačite.",
+    step2CapA: '2a &middot; Kliknite zeleni link "Edit"',
+    step2CapB: '2b &middot; Uklonite kvačicu sa "I want to cover fees"',
+    step3Title: "Postavite opcioni tip na nulu",
+    step3Body: 'Givebutter unaprijed bira tip od 15% koji <em>ne</em> ide džamiji. Otvorite padajući meni za tip i odaberite <strong>"Other"</strong>, zatim spustite iznos na <strong>$0</strong> dugmetom minus (ili upišite 0).',
+    step3Tip: "&#9733; Kritičan korak &mdash; ne preskačite.",
+    step3CapA: '3a &middot; Otvorite meni, odaberite "Other"',
+    step3CapB: '3b &middot; Kliknite "&minus;" dok iznos ne bude $0',
+    step4Title: "Odaberite način plaćanja i pošaljite",
+    step4Body: "Odaberite karticu, banku, Apple Pay, Google Pay, PayPal ili Venmo &mdash; Givebutter prihvata sve. Zatim kliknite <strong>Donate</strong>. Dobit ćete potvrdu na email. <em>Džezakallahu hajran</em> &mdash; Allah vas nagradio.",
     guideCtaText: "Spremni? Sigurna Givebutter forma je odmah ispod.",
     guideCtaBtn: "Skroluj do forme &darr;",
     donateHeader: "Donacija putem Givebuttera",
