@@ -168,6 +168,34 @@
   }
   .guide-cta p{color:var(--green-900);font-weight:600;margin-bottom:14px;font-size:1.05rem}
 
+  /* ---- Campaign selector tabs ---- */
+  .campaign-tabs{
+    display:flex;gap:12px;
+    overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+    scrollbar-width:none;padding:4px 4px 14px;margin-bottom:28px;
+  }
+  .campaign-tabs::-webkit-scrollbar{display:none}
+  .campaign-tab{
+    flex:0 0 auto;width:min(78vw,260px);scroll-snap-align:start;
+    border-radius:var(--radius);border:2px solid var(--line);
+    padding:18px 20px;cursor:pointer;transition:border-color .2s,background .2s,transform .15s,box-shadow .2s;
+    background:var(--white);text-align:left;font-family:inherit;
+    box-shadow:var(--shadow-sm);
+  }
+  .campaign-tab:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+  .campaign-tab.active{border-color:var(--tab-color);background:var(--tab-bg);box-shadow:0 8px 28px rgba(0,0,0,.10)}
+  .campaign-badge{
+    display:inline-block;font-size:.62rem;font-weight:700;padding:2px 9px;
+    border-radius:999px;margin-bottom:10px;text-transform:uppercase;letter-spacing:.07em;
+  }
+  .campaign-tab-icon{font-size:2rem;margin-bottom:8px;line-height:1}
+  .campaign-tab-title{font-size:.92rem;font-weight:700;color:var(--ink);margin-bottom:4px;font-family:'Cormorant Garamond',serif;font-size:1.1rem}
+  .campaign-tab-desc{font-size:.78rem;color:var(--muted);line-height:1.5}
+  @media(min-width:700px){
+    .campaign-tabs{overflow-x:visible;justify-content:center;flex-wrap:nowrap}
+    .campaign-tab{width:auto;flex:1;max-width:240px}
+  }
+
   /* ---- Donate / Givebutter embed ---- */
   .donate-section{padding:48px 0 64px;background:var(--cream);scroll-margin-top:80px}
   .donate-card{
@@ -336,43 +364,75 @@
   </div>
 </section>
 
-<!-- ============ DONATE EMBED (now SECOND, after the guide) ============ -->
+<!-- ============ DONATE EMBED ============ -->
 <section class="donate-section" id="donate-form">
   <div class="container">
+
+    <div style="text-align:center;margin-bottom:32px">
+      <span class="section-eyebrow" data-i18n="donatePickEyebrow">Choose a Campaign</span>
+      <h2 data-i18n="donatePickTitle">Every gift builds our future</h2>
+      <p class="lead" data-i18n="donatePickLead">Select a campaign below, follow the steps above to remove the tip, then complete your secure donation.</p>
+    </div>
+
+    <!-- Campaign selector — swipeable on mobile, 3-col on desktop -->
+    <div class="campaign-tabs" id="campaignTabs">
+
+      <!-- 1. Buy a Brick — TOP PRIORITY -->
+      <button class="campaign-tab active" data-campaign="brick"
+              style="--tab-color:#B5451B;--tab-bg:#FFF3EE"
+              onclick="selectCampaign('brick')">
+        <div class="campaign-badge" style="background:#FDDDD0;color:#B5451B">⭐ Top Priority</div>
+        <div class="campaign-tab-icon">🧱</div>
+        <div class="campaign-tab-title">Buy a Brick</div>
+        <div class="campaign-tab-desc">Sponsor a brick in our new mosque — a lasting <em>sadaqah jariyah</em> with your name on it.</div>
+      </button>
+
+      <!-- 2. Build the House of Allah -->
+      <button class="campaign-tab" data-campaign="mosque"
+              style="--tab-color:#0F5132;--tab-bg:#EEF7F2"
+              onclick="selectCampaign('mosque')">
+        <div class="campaign-tab-icon">🕌</div>
+        <div class="campaign-tab-title">Build the House of Allah</div>
+        <div class="campaign-tab-desc">The main mosque construction fund — support the permanent home of our community.</div>
+      </button>
+
+      <!-- 3. Eldin Concert — lowest priority -->
+      <button class="campaign-tab" data-campaign="concert"
+              style="--tab-color:#5B2C8D;--tab-bg:#F4EFF9"
+              onclick="selectCampaign('concert')">
+        <div class="campaign-tab-icon">🎵</div>
+        <div class="campaign-tab-title">Eldin Huseinbegovic Concert</div>
+        <div class="campaign-tab-desc">A special fundraising concert — support our community through the gift of music.</div>
+      </button>
+
+    </div>
+
+    <!-- Donation form card — iframe swaps on campaign change -->
     <div class="donate-card">
       <div class="donate-card-header">
-        <h2 data-i18n="donateHeader">Donate via Givebutter</h2>
-        <p data-i18n="donateHeaderSub">Secure giving &middot; 100% of your donation goes to IEC Ezan when you skip the optional tip in Step 2 above.</p>
+        <h2 id="donateCardTitle">Buy a Brick</h2>
+        <p id="donateCardSub">Sponsor a brick in our new mosque &mdash; a lasting sadaqah jariyah.</p>
       </div>
-
-      <!-- GIVEBUTTER CAMPAIGN EMBED
-           This iframe loads the live Givebutter campaign so donations
-           process directly on Givebutter's secure infrastructure.
-
-           NOTE: If you grab the official Givebutter widget ID from your
-           dashboard (Settings &rarr; Embed), you can swap this iframe for
-           the script-based web-component embed for a smoother UX:
-             <script src="https://widgets.givebutter.com/latest.umd.cjs?acpt"></script>
-             <givebutter-widget id="YOUR_WIDGET_ID"></givebutter-widget>
-      -->
       <div class="donate-iframe-wrap">
         <iframe
-          src="https://givebutter.com/embed/c/build-the-house-of-allah-islamic-education-center-ezan-mj2i1d"
+          id="donateIframe"
+          src="https://givebutter.com/embed/c/buy-a-brick-uzqe2y"
           title="Donate to IEC Ezan via Givebutter"
           loading="lazy"
           allow="payment"
         ></iframe>
       </div>
-
       <div class="donate-fallback">
         <p data-i18n="donateFallback">If the form above doesn't load, you can donate directly on Givebutter:</p>
-        <a href="https://givebutter.com/build-the-house-of-allah-islamic-education-center-ezan-mj2i1d"
+        <a id="donateFallbackLink"
+           href="https://givebutter.com/buy-a-brick-uzqe2y"
            target="_blank" rel="noopener"
-           class="btn btn-primary" data-i18n="donateFallbackBtn">
+           class="btn btn-primary">
           Open Givebutter Page &rarr;
         </a>
       </div>
     </div>
+
   </div>
 </section>
 
@@ -457,6 +517,9 @@ const i18n = {
     guideCtaBtn: "Scroll to donation form &darr;",
     donateHeader: "Donate via Givebutter",
     donateHeaderSub: "Secure giving &middot; 100% of your donation goes to IEC Ezan when you skip the optional tip in Step 2 above.",
+    donatePickEyebrow: "Choose a Campaign",
+    donatePickTitle: "Every gift builds our future",
+    donatePickLead: "Select a campaign below, follow the steps above to remove the tip, then complete your secure donation.",
     donateFallback: "If the form above doesn't load, you can donate directly on Givebutter:",
     donateFallbackBtn: "Open Givebutter Page &rarr;",
     trustEyebrow: "Why Givebutter",
@@ -502,6 +565,9 @@ const i18n = {
     guideCtaBtn: "Skroluj do forme &darr;",
     donateHeader: "Donacija putem Givebuttera",
     donateHeaderSub: "Sigurno doniranje &middot; 100% vaše donacije ide IEC Ezanu ako preskočite opcioni tip u koraku 2 iznad.",
+    donatePickEyebrow: "Odaberite kampanju",
+    donatePickTitle: "Svaki dar gradi našu budućnost",
+    donatePickLead: "Odaberite kampanju ispod, pratite korake iznad da uklonite tip, zatim dovršite sigurnu donaciju.",
     donateFallback: "Ako se forma iznad ne učita, možete donirati direktno na Givebutteru:",
     donateFallbackBtn: "Otvori Givebutter stranicu &rarr;",
     trustEyebrow: "Zašto Givebutter",
@@ -550,6 +616,52 @@ try {
 } catch(e){}
 
 document.getElementById('yr').textContent = new Date().getFullYear();
+
+/* ---------- Campaign switcher ---------- */
+const campaigns = {
+  brick: {
+    embed: 'https://givebutter.com/embed/c/buy-a-brick-uzqe2y',
+    direct: 'https://givebutter.com/buy-a-brick-uzqe2y',
+    title: 'Buy a Brick',
+    sub: 'Sponsor a brick in our new mosque &mdash; a lasting sadaqah jariyah.'
+  },
+  mosque: {
+    embed: 'https://givebutter.com/embed/c/build-the-house-of-allah-islamic-education-center-ezan-mj2i1d',
+    direct: 'https://givebutter.com/build-the-house-of-allah-islamic-education-center-ezan-mj2i1d',
+    title: 'Build the House of Allah',
+    sub: 'Support the full mosque construction fund for our growing community.'
+  },
+  concert: {
+    embed: 'https://givebutter.com/embed/c/eldin-huseinbegovic-0dnppn',
+    direct: 'https://givebutter.com/eldin-huseinbegovic-0dnppn',
+    title: 'Eldin Huseinbegovic Concert',
+    sub: 'A special fundraising concert supporting our community through music.'
+  }
+};
+
+function selectCampaign(id) {
+  const c = campaigns[id];
+  if (!c) return;
+  // Update tab states
+  document.querySelectorAll('.campaign-tab').forEach(t => {
+    t.classList.toggle('active', t.dataset.campaign === id);
+  });
+  // Swap iframe
+  const iframe = document.getElementById('donateIframe');
+  iframe.src = c.embed;
+  // Update card header
+  document.getElementById('donateCardTitle').textContent = c.title;
+  document.getElementById('donateCardSub').innerHTML = c.sub;
+  // Update fallback link
+  const fb = document.getElementById('donateFallbackLink');
+  fb.href = c.direct;
+  // Smooth scroll to form on mobile tap
+  if (window.innerWidth < 700) {
+    setTimeout(() => {
+      document.getElementById('donate-form').scrollIntoView({behavior:'smooth', block:'start'});
+    }, 80);
+  }
+}
 </script>
 
 </body>
