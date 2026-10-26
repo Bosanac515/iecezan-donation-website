@@ -171,33 +171,6 @@
     padding:8px 12px;font-size:.78rem;color:var(--muted);background:var(--cream-2);
     border-top:1px solid var(--line);text-align:center;font-style:italic;
   }
-  .miniguide{
-    max-width:820px;margin:0 auto;display:grid;gap:16px;
-    grid-template-columns:1fr;align-items:start;
-  }
-  @media(min-width:700px){.miniguide{grid-template-columns:repeat(2,1fr)}}
-  .mg{
-    background:var(--white);border:1px solid var(--line);border-radius:10px;
-    overflow:hidden;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;
-  }
-  .mg img{
-    width:100%;height:210px;object-fit:contain;object-position:center;
-    display:block;background:var(--cream-2);padding:10px;
-  }
-  .mg figcaption{
-    padding:10px 12px;font-size:.8rem;color:var(--ink);line-height:1.4;
-    border-top:1px solid var(--line);display:flex;gap:8px;align-items:flex-start;flex:1;
-  }
-  .mg .n{
-    flex-shrink:0;width:20px;height:20px;border-radius:50%;background:var(--green-700);
-    color:var(--gold-light);font-size:.72rem;font-weight:700;
-    display:flex;align-items:center;justify-content:center;margin-top:1px;
-  }
-  .mg.optional figcaption{color:var(--muted)}
-  .miniguide-foot{
-    max-width:860px;margin:14px auto 0;text-align:center;
-    font-size:.88rem;color:var(--muted);
-  }
   .critical-banner{
     max-width:760px;margin:0 auto 28px;padding:14px 18px;
     background:linear-gradient(90deg,rgba(201,169,97,.15),rgba(201,169,97,.05));
@@ -315,7 +288,9 @@
       </span>
     </a>
     <div class="nav-actions">
+      <!-- MEMBERSHIP PAGE LINK — re-enable once membership.html is deployed
       <a href="membership.html" class="back-link gold" data-i18n="navMembership"><span class="full">Yearly Membership</span><span class="short">Members</span></a>
+      -->
       <a href="https://iecezan.com" class="back-link hide-mobile" data-i18n="backLink"><span class="full">&larr; Back to main site</span><span class="short">&larr; Main</span></a>
       <div class="lang-toggle" role="group" aria-label="Language">
         <button type="button" data-lang="en" class="active" aria-pressed="true">EN</button>
@@ -333,7 +308,9 @@
     <p data-i18n="heroSub">Help us build a permanent home for our community. Every contribution &mdash; large or small &mdash; directly supports the new mosque and the daily mission of IEC Ezan.</p>
     <div class="hero-cta">
       <a href="#donate-form" class="btn btn-primary" data-i18n="heroBtnDonate">Make a donation &darr;</a>
+      <!-- MEMBERSHIP PAGE LINK — re-enable once membership.html is deployed
       <a href="membership.html" class="btn btn-ghost" data-i18n="heroBtnMember">Yearly membership &rarr;</a>
+      -->
     </div>
   </div>
 </section>
@@ -342,39 +319,77 @@
 <section class="guide" id="before-you-donate">
   <div class="container">
     <div class="center">
-      <span class="section-eyebrow" data-i18n="guideEyebrow">Good to Know</span>
-      <h2 data-i18n="guideTitle">100% of your donation reaches the mosque</h2>
-      <p class="lead" data-i18n="guideLead">Givebutter is free for nonprofits, and IEC Ezan receives the full amount you give &mdash; processing fees are covered, not taken out of your gift.</p>
+      <span class="section-eyebrow" data-i18n="guideEyebrow">Before You Donate</span>
+      <h2 data-i18n="guideTitle">Please read these 4 quick steps first</h2>
+      <p class="lead" data-i18n="guideLead">Givebutter is free for nonprofits &mdash; but the platform asks donors for an optional tip. You can decline it. Follow the steps below so 100% of your gift reaches the mosque, then scroll down to the donation form.</p>
     </div>
 
-    <div class="critical-banner" data-i18n="tipNote">
-      <strong>One optional extra:</strong> at checkout Givebutter suggests a 15% tip <em>for itself</em> &mdash; separate from your donation. It's optional and supports Givebutter, not the mosque. Here's how to set it to $0:
+    <div class="critical-banner" data-i18n="criticalBanner">
+      <strong>Important:</strong> By default, Givebutter adds a processing fee and a 15% tip on top of your donation. The steps below show you exactly where to click to remove both, so 100% of your gift reaches the mosque.
     </div>
 
-    <div class="miniguide">
-      <figure class="mg">
-        <img src="assets/gb-step1-amount.png" alt="Givebutter amount selector with Continue button" loading="lazy">
-        <figcaption><span class="n">1</span><span data-i18n="mg1">Pick your amount, then <strong>Continue</strong>.</span></figcaption>
-      </figure>
-      <figure class="mg">
-        <img src="assets/gb-step3-tip-other.png" alt="Tip dropdown with Other selected" loading="lazy">
-        <figcaption><span class="n">2</span><span data-i18n="mg2">Open the tip menu, choose <strong>"Other"</strong>.</span></figcaption>
-      </figure>
-      <figure class="mg">
-        <img src="assets/gb-step3-tip-zero.png" alt="Tip reduced to zero with the minus button" loading="lazy">
-        <figcaption><span class="n">3</span><span data-i18n="mg3">Tap <strong>&minus;</strong> until the tip reads <strong>$0</strong>.</span></figcaption>
-      </figure>
-      <figure class="mg optional">
-        <img src="assets/gb-step2-uncheck-fees.png" alt="The I want to cover fees checkbox" loading="lazy">
-        <figcaption><span class="n">4</span><span data-i18n="mg4"><em>Optional:</em> click <strong>Edit</strong> by the fee to uncheck &ldquo;cover fees.&rdquo;</span></figcaption>
-      </figure>
-    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3 data-i18n="step1Title">Choose your donation amount</h3>
+          <p data-i18n="step1Body">Tap one of the preset amounts or type your own in the box, then click <strong>Continue</strong>.</p>
+          <div class="step-shot">
+            <img src="assets/gb-step1-amount.png" alt="Givebutter donation amount selector with $25 chosen and a Continue button" loading="lazy">
+          </div>
+        </div>
+      </div>
 
-    <p class="miniguide-foot" data-i18n="mgFoot">Then choose card, bank, Apple&nbsp;Pay, Google&nbsp;Pay, PayPal, or Venmo and hit <strong>Donate</strong>. The mosque receives your full gift either way.</p>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3 data-i18n="step2Title">Remove the processing fee</h3>
+          <p data-i18n="step2Body">On the summary screen, you'll see a <strong>processing fee</strong> added on top. Click the green <strong>"Edit"</strong> link next to it, then <strong>uncheck</strong> the "I want to cover fees" box.</p>
+          <span class="tip" data-i18n="step2Tip">&#9733; Critical step &mdash; don't skip.</span>
+          <div class="step-shot-pair">
+            <figure>
+              <img src="assets/gb-step2-edit-fee.png" alt="Click Edit next to the processing fee" loading="lazy">
+              <figcaption data-i18n="step2CapA">2a &middot; Click the green "Edit" link</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/gb-step2-uncheck-fees.png" alt="Uncheck the I want to cover fees checkbox" loading="lazy">
+              <figcaption data-i18n="step2CapB">2b &middot; Uncheck "I want to cover fees"</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3 data-i18n="step3Title">Set the optional tip to zero</h3>
+          <p data-i18n="step3Body">Givebutter pre-selects a 15% tip that does <em>not</em> go to the mosque. Open the tip dropdown and choose <strong>"Other"</strong>, then bring the amount down to <strong>$0</strong> using the minus button (or type 0).</p>
+          <span class="tip" data-i18n="step3Tip">&#9733; Critical step &mdash; don't skip.</span>
+          <div class="step-shot-pair">
+            <figure>
+              <img src="assets/gb-step3-tip-other.png" alt="Click the tip dropdown and choose Other" loading="lazy">
+              <figcaption data-i18n="step3CapA">3a &middot; Open dropdown, choose "Other"</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/gb-step3-tip-zero.png" alt="Reduce the tip amount to zero using the minus button" loading="lazy">
+              <figcaption data-i18n="step3CapB">3b &middot; Click "&minus;" until the amount is $0</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h3 data-i18n="step4Title">Choose your payment method &amp; submit</h3>
+          <p data-i18n="step4Body">Pick card, bank, Apple Pay, Google Pay, PayPal, or Venmo &mdash; Givebutter accepts them all. Then click <strong>Donate</strong>. You'll receive a receipt by email. <em>Jazak Allahu khairan</em> &mdash; may Allah reward you.</p>
+        </div>
+      </div>
+    </div>
 
     <div class="guide-cta">
-      <p data-i18n="guideCtaText">Ready when you are.</p>
-      <a href="#donate-form" class="btn btn-primary" data-i18n="guideCtaBtn">Choose a campaign &darr;</a>
+      <p data-i18n="guideCtaText">Ready? The secure Givebutter form is right below.</p>
+      <a href="#donate-form" class="btn btn-primary" data-i18n="guideCtaBtn">Scroll to donation form &darr;</a>
     </div>
   </div>
 </section>
@@ -392,24 +407,24 @@
     <!-- Campaign selector — swipeable on mobile, 3-col on desktop -->
     <div class="campaign-tabs" id="campaignTabs">
 
-      <!-- 1. Buy a Brick — TOP PRIORITY -->
-      <button class="campaign-tab active" data-campaign="brick"
-              style="--tab-color:#B5451B;--tab-bg:#FFF3EE"
-              onclick="selectCampaign('brick')">
-        <div class="campaign-badge" style="background:#FDDDD0;color:#B5451B" data-i18n="campBrickBadge">⭐ Top Priority</div>
-        <div class="campaign-tab-icon">🧱</div>
-        <div class="campaign-tab-title" data-i18n="campBrickTitle">Buy a Brick</div>
-        <div class="campaign-tab-desc" data-i18n="campBrickDesc">Sponsor a brick in our new mosque — a lasting <em>sadaqah jariyah</em> with your name on it.</div>
-      </button>
-
-      <!-- 2. Build the House of Allah -->
-      <button class="campaign-tab" data-campaign="mosque"
+      <!-- Build the House of Allah -->
+      <button class="campaign-tab active" data-campaign="mosque"
               style="--tab-color:#0F5132;--tab-bg:#EEF7F2"
               onclick="selectCampaign('mosque')">
         <div class="campaign-badge" style="background:#DCEDE3;color:#0F5132" data-i18n="campMosqueBadge">Construction Fund</div>
         <div class="campaign-tab-icon">🕌</div>
         <div class="campaign-tab-title" data-i18n="campMosqueTitle">Build the House of Allah</div>
         <div class="campaign-tab-desc" data-i18n="campMosqueDesc">The main mosque construction fund — support the permanent home of our community.</div>
+      </button>
+
+      <!-- Buy a Brick -->
+      <button class="campaign-tab" data-campaign="brick"
+              style="--tab-color:#B5451B;--tab-bg:#FFF3EE"
+              onclick="selectCampaign('brick')">
+        <div class="campaign-badge" style="background:#FDDDD0;color:#B5451B" data-i18n="campBrickBadge">Sadaqah Jariyah</div>
+        <div class="campaign-tab-icon">🧱</div>
+        <div class="campaign-tab-title" data-i18n="campBrickTitle">Buy a Brick</div>
+        <div class="campaign-tab-desc" data-i18n="campBrickDesc">Sponsor a brick in our new mosque — a lasting <em>sadaqah jariyah</em> with your name on it.</div>
       </button>
 
       <!-- 3. Yearly Membership -->
@@ -427,13 +442,13 @@
     <!-- Donation form card — iframe swaps on campaign change -->
     <div class="donate-card">
       <div class="donate-card-header">
-        <h2 id="donateCardTitle">Buy a Brick</h2>
-        <p id="donateCardSub">Sponsor a brick in our new mosque &mdash; a lasting sadaqah jariyah.</p>
+        <h2 id="donateCardTitle">Build the House of Allah</h2>
+        <p id="donateCardSub">Support the full mosque construction fund for our growing community.</p>
       </div>
       <div class="donate-iframe-wrap">
         <iframe
           id="donateIframe"
-          src="https://givebutter.com/embed/c/buy-a-brick-uzqe2y"
+          src="https://givebutter.com/embed/c/build-the-house-of-allah-islamic-education-center-ezan-mj2i1d"
           title="Donate to IEC Ezan via Givebutter"
           loading="lazy"
           allow="payment"
@@ -442,7 +457,7 @@
       <div class="donate-fallback">
         <p data-i18n="donateFallback">If the form above doesn't load, you can donate directly on Givebutter:</p>
         <a id="donateFallbackLink"
-           href="https://givebutter.com/buy-a-brick-uzqe2y"
+           href="https://givebutter.com/build-the-house-of-allah-islamic-education-center-ezan-mj2i1d"
            target="_blank" rel="noopener"
            class="btn btn-primary">
           Open Givebutter Page &rarr;
@@ -492,7 +507,9 @@
     </a>
     <p style="max-width:480px" data-i18n="footerTag">Thank you for supporting our community. May Allah accept your contribution.</p>
     <div class="small-links">
+      <!-- MEMBERSHIP PAGE LINK — re-enable once membership.html is deployed
       <a href="membership.html" data-i18n="footerMembership">Membership</a>
+      -->
       <a href="https://iecezan.com" data-i18n="footerHome">Main Site</a>
       <a href="https://iecezan.com#about" data-i18n="footerAbout">About</a>
       <a href="https://iecezan.com#contact" data-i18n="footerContact">Contact</a>
@@ -517,23 +534,32 @@ const i18n = {
     heroSub: "Help us build a permanent home for our community. Every contribution &mdash; large or small &mdash; directly supports the new mosque and the daily mission of IEC Ezan.",
     heroBtnDonate: "Make a donation &darr;",
     heroBtnMember: "Yearly membership &rarr;",
-    guideEyebrow: "Good to Know",
-    guideTitle: "100% of your donation reaches the mosque",
-    guideLead: "Givebutter is free for nonprofits, and IEC Ezan receives the full amount you give &mdash; processing fees are covered, not taken out of your gift.",
-    tipNote: "<strong>One optional extra:</strong> at checkout Givebutter suggests a 15% tip <em>for itself</em> &mdash; separate from your donation. It's optional and supports Givebutter, not the mosque. Here's how to set it to $0:",
-    mg1: "Pick your amount, then <strong>Continue</strong>.",
-    mg2: 'Open the tip menu, choose <strong>"Other"</strong>.',
-    mg3: "Tap <strong>&minus;</strong> until the tip reads <strong>$0</strong>.",
-    mg4: "<em>Optional:</em> click <strong>Edit</strong> by the fee to uncheck &ldquo;cover fees.&rdquo;",
-    mgFoot: "Then choose card, bank, Apple&nbsp;Pay, Google&nbsp;Pay, PayPal, or Venmo and hit <strong>Donate</strong>. The mosque receives your full gift either way.",
-    guideCtaText: "Ready when you are.",
-    guideCtaBtn: "Choose a campaign &darr;",
+    guideEyebrow: "Before You Donate",
+    guideTitle: "Please read these quick steps first",
+    guideLead: "Givebutter is free for nonprofits &mdash; but by default it adds a processing fee and an optional tip on top of your donation. You can decline both. Follow the screenshots below so 100% of your gift reaches the mosque, then scroll down to the donation form.",
+    criticalBanner: "<strong>Important:</strong> By default, Givebutter adds a processing fee and a 15% tip on top of your donation. The steps below show you exactly where to click to remove both, so 100% of your gift reaches the mosque.",
+    step1Title: "Choose your donation amount",
+    step1Body: "Tap one of the preset amounts or type your own in the box, then click <strong>Continue</strong>.",
+    step2Title: "Remove the processing fee",
+    step2Body: 'On the summary screen, you\'ll see a <strong>processing fee</strong> added on top. Click the green <strong>"Edit"</strong> link next to it, then <strong>uncheck</strong> the "I want to cover fees" box.',
+    step2Tip: "&#9733; Critical step &mdash; don't skip.",
+    step2CapA: '2a &middot; Click the green "Edit" link',
+    step2CapB: '2b &middot; Uncheck "I want to cover fees"',
+    step3Title: "Set the optional tip to zero",
+    step3Body: 'Givebutter pre-selects a 15% tip that does <em>not</em> go to the mosque. Open the tip dropdown and choose <strong>"Other"</strong>, then bring the amount down to <strong>$0</strong> using the minus button (or type 0).',
+    step3Tip: "&#9733; Critical step &mdash; don't skip.",
+    step3CapA: '3a &middot; Open dropdown, choose "Other"',
+    step3CapB: '3b &middot; Click "&minus;" until the amount is $0',
+    step4Title: "Choose your payment method &amp; submit",
+    step4Body: "Pick card, bank, Apple Pay, Google Pay, PayPal, or Venmo &mdash; Givebutter accepts them all. Then click <strong>Donate</strong>. You'll receive a receipt by email. <em>Jazak Allahu khairan</em> &mdash; may Allah reward you.",
+    guideCtaText: "Ready? The secure Givebutter form is right below.",
+    guideCtaBtn: "Scroll to donation form &darr;",
     donateHeader: "Donate via Givebutter",
     donateHeaderSub: "Secure giving &middot; 100% of your donation goes to IEC Ezan.",
     donatePickEyebrow: "Choose a Campaign",
     donatePickTitle: "Every gift builds our future",
     donatePickLead: "Choose the campaign closest to your heart, then complete your donation securely below.",
-    campBrickBadge: "⭐ Top Priority",
+    campBrickBadge: "Sadaqah Jariyah",
     campBrickTitle: "Buy a Brick",
     campBrickDesc: "Sponsor a brick in our new mosque — a lasting <em>sadaqah jariyah</em> with your name on it.",
     campMosqueBadge: "Construction Fund",
@@ -547,7 +573,7 @@ const i18n = {
     cardMosqueTitle: "Build the House of Allah",
     cardMosqueSub: "Support the full mosque construction fund for our growing community.",
     cardMembershipTitle: "Yearly Membership",
-    cardMembershipSub: 'Your annual membership, supporting the center all year. <a href="membership.html">What membership includes &rarr;</a>',
+    cardMembershipSub: "Your annual membership &mdash; steady support for the center all year long.",
     donateFallback: "If the form above doesn't load, you can donate directly on Givebutter:",
     donateFallbackBtn: "Open Givebutter Page &rarr;",
     trustEyebrow: "Why Givebutter",
@@ -576,23 +602,32 @@ const i18n = {
     heroSub: "Pomozite nam izgraditi stalni dom za našu zajednicu. Svaki doprinos &mdash; veliki ili mali &mdash; direktno podržava izgradnju nove džamije i svakodnevni rad IEC Ezana.",
     heroBtnDonate: "Doniraj &darr;",
     heroBtnMember: "Godišnja članarina &rarr;",
-    guideEyebrow: "Dobro je znati",
-    guideTitle: "100% vaše donacije stiže džamiji",
-    guideLead: "Givebutter je besplatan za neprofitne organizacije, a IEC Ezan prima puni iznos koji date &mdash; procesne naknade su pokrivene i ne oduzimaju se od vašeg dara.",
-    tipNote: "<strong>Jedan opcioni dodatak:</strong> na naplati Givebutter predlaže tip od 15% <em>za sebe</em> &mdash; odvojen od vaše donacije. Opcion je i podržava Givebutter, a ne džamiju. Evo kako ga postaviti na $0:",
-    mg1: "Odaberite iznos, zatim <strong>Continue</strong>.",
-    mg2: 'Otvorite meni za tip, odaberite <strong>"Other"</strong>.',
-    mg3: "Pritiskajte <strong>&minus;</strong> dok tip ne bude <strong>$0</strong>.",
-    mg4: "<em>Opciono:</em> kliknite <strong>Edit</strong> kod naknade i uklonite kvačicu.",
-    mgFoot: "Zatim odaberite karticu, banku, Apple&nbsp;Pay, Google&nbsp;Pay, PayPal ili Venmo i kliknite <strong>Donate</strong>. Džamija u svakom slučaju prima vaš puni dar.",
-    guideCtaText: "Spremni ste kad god poželite.",
-    guideCtaBtn: "Odaberi kampanju &darr;",
+    guideEyebrow: "Prije nego donirate",
+    guideTitle: "Molimo pročitajte ove korake",
+    guideLead: "Givebutter je besplatan za neprofitne organizacije &mdash; ali po defaultu dodaje proces­nu naknadu i opcioni tip na vašu donaciju. Možete oboje odbiti. Pratite slike ispod da 100% vašeg dara stigne džamiji, a zatim skrolajte do forme.",
+    criticalBanner: "<strong>Važno:</strong> Po defaultu Givebutter dodaje proces­nu naknadu i 15% tipa na vašu donaciju. Koraci ispod pokazuju tačno gdje kliknuti da uklonite oboje, kako bi 100% dara stiglo džamiji.",
+    step1Title: "Odaberite iznos donacije",
+    step1Body: "Odaberite ponuđeni iznos ili upišite svoj u polju, zatim kliknite <strong>Continue</strong>.",
+    step2Title: "Uklonite proces­nu naknadu",
+    step2Body: 'Na ekranu sa rezimeom vidjet ćete dodatnu <strong>proces­nu naknadu</strong>. Kliknite zeleni link <strong>"Edit"</strong> pored nje, zatim <strong>uklonite kvačicu</strong> sa polja "I want to cover fees".',
+    step2Tip: "&#9733; Kritičan korak &mdash; ne preskačite.",
+    step2CapA: '2a &middot; Kliknite zeleni link "Edit"',
+    step2CapB: '2b &middot; Uklonite kvačicu sa "I want to cover fees"',
+    step3Title: "Postavite opcioni tip na nulu",
+    step3Body: 'Givebutter unaprijed bira tip od 15% koji <em>ne</em> ide džamiji. Otvorite padajući meni za tip i odaberite <strong>"Other"</strong>, zatim spustite iznos na <strong>$0</strong> dugmetom minus (ili upišite 0).',
+    step3Tip: "&#9733; Kritičan korak &mdash; ne preskačite.",
+    step3CapA: '3a &middot; Otvorite meni, odaberite "Other"',
+    step3CapB: '3b &middot; Kliknite "&minus;" dok iznos ne bude $0',
+    step4Title: "Odaberite način plaćanja i pošaljite",
+    step4Body: "Odaberite karticu, banku, Apple Pay, Google Pay, PayPal ili Venmo &mdash; Givebutter prihvata sve. Zatim kliknite <strong>Donate</strong>. Dobit ćete potvrdu na email. <em>Džezakallahu hajran</em> &mdash; Allah vas nagradio.",
+    guideCtaText: "Spremni? Sigurna Givebutter forma je odmah ispod.",
+    guideCtaBtn: "Skroluj do forme &darr;",
     donateHeader: "Donacija putem Givebuttera",
     donateHeaderSub: "Sigurno doniranje &middot; 100% vaše donacije ide IEC Ezanu.",
     donatePickEyebrow: "Odaberite kampanju",
     donatePickTitle: "Svaki dar gradi našu budućnost",
     donatePickLead: "Odaberite kampanju koja vam je najbliža srcu, zatim dovršite donaciju sigurno ispod.",
-    campBrickBadge: "⭐ Prioritet",
+    campBrickBadge: "Sadaka džarija",
     campBrickTitle: "Kupi ciglu",
     campBrickDesc: "Sponzorišite ciglu u našoj novoj džamiji — trajna <em>sadaka džarija</em> sa vašim imenom.",
     campMosqueBadge: "Fond za izgradnju",
@@ -606,7 +641,7 @@ const i18n = {
     cardMosqueTitle: "Gradimo Allahovu kuću",
     cardMosqueSub: "Podržite fond za izgradnju džamije za našu rastuću zajednicu.",
     cardMembershipTitle: "Godišnja članarina",
-    cardMembershipSub: 'Vaša godišnja članarina, podrška centru cijele godine. <a href="membership.html">Šta članarina uključuje &rarr;</a>',
+    cardMembershipSub: "Vaša godišnja članarina &mdash; stalna podrška centru cijele godine.",
     donateFallback: "Ako se forma iznad ne učita, možete donirati direktno na Givebutteru:",
     donateFallbackBtn: "Otvori Givebutter stranicu &rarr;",
     trustEyebrow: "Zašto Givebutter",
@@ -676,7 +711,7 @@ const campaigns = {
     direct: 'https://givebutter.com/yearly-membership-ezan'
   }
 };
-let activeCampaign = 'brick';
+let activeCampaign = 'mosque';
 
 function renderCampaignHeader(){
   const dict = i18n[currentLang] || i18n.en;
